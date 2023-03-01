@@ -13,10 +13,20 @@ module.exports = {
         type: Sequelize.DATE
       },
       patient_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Patients",
+          key: "id",
+          allowNull: false
+        }
       },
       doctor_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Doctors",
+          key: "id",
+          allowNull: false
+        }
       },
       createdAt: {
         allowNull: false,
