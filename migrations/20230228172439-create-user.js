@@ -15,6 +15,21 @@ module.exports = {
       surname: {
         type: Sequelize.STRING
       },
+      DNI: {
+        type: Sequelize.STRING
+      },
+      phone_number:{
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      },
+      birth: {
+        type: Sequelize.DATEONLY
+      },
       role_id: {
         type: Sequelize.INTEGER,
         references: {
