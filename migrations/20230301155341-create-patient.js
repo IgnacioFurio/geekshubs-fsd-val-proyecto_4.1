@@ -9,8 +9,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      name: {
+        type: Sequelize.STRING
+      },
+      surname: {
+        type: Sequelize.STRING
+      },
+      DNI: {
+        type: Sequelize.STRING
+      },
+      phone_number:{
+        type: Sequelize.STRING
+      },
       post_code: {
         type: Sequelize.INTEGER
+      },
+      birth: {
+        type: Sequelize.DATEONLY
       },
       allergy: {
         type: Sequelize.STRING

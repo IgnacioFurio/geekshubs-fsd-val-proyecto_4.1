@@ -9,16 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      surname: {
-        type: Sequelize.STRING
-      },
-      DNI: {
-        type: Sequelize.STRING
-      },
-      phone_number:{
+      user_name: {
         type: Sequelize.STRING
       },
       email: {
@@ -26,10 +17,7 @@ module.exports = {
       },
       password: {
         type: Sequelize.STRING
-      },
-      birth: {
-        type: Sequelize.DATEONLY
-      },
+      },      
       role_id: {
         type: Sequelize.INTEGER,
         references: {
