@@ -24,6 +24,13 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: "user_id"
         }
         );
+
+      User.hasMany(
+        models.Doctor,
+        {
+          foreignKey: "user_id"
+        }
+        );
     }
   }
   User.init({
