@@ -14,6 +14,14 @@ module.exports = (sequelize, DataTypes) => {
       Patient.belongsTo(
         models.User
       );
+
+      Patient.belongsToMany(
+        models.Doctor,
+        {
+          through: "Appointments",
+          foreignKey: "patient_id"
+        }
+      );
     }
   }
   Patient.init({
