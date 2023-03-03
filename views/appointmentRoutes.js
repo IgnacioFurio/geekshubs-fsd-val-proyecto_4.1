@@ -1,3 +1,4 @@
+
 const appointmentController = require('../controllers/appointmentController');
 const { route } = require('./patientRoutes');
 

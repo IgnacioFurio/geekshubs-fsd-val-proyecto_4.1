@@ -34,11 +34,11 @@ appointmentController.getTodayAppointment = (req,res) => async (req, res) => {
       return res.status(500).send(error.message);
     }
 };
-appointmentController.createAppointment = (req,res) => {return res.send('Cita creada')};
-appointmentController.updateAppointment = (req,res) => {return res.send('Cita cambiada')};
-appointmentController.deleteAppointment =  (req,res) => {return res.send('Cita eliminada')};
+// appointmentController.createAppointment = (req,res) => {return res.send('Cita creada')};
+// appointmentController.updateAppointment = (req,res) => {return res.send('Cita cambiada')};
+// appointmentController.deleteAppointment =  (req,res) => {return res.send('Cita eliminada')};
 
-module.exports = appointmentController;
+
 
 
 appointmentController.createAppointment = async (req, res) => {
