@@ -6,15 +6,15 @@ const jwt = require('jsonwebtoken');
 authController.createUserProfile = async (req, res) => {
     try {
     // Recuperar información de la petición
-    const { name, email, password } = req.body;
+    const { username, email, password } = req.body;
     // Cifrar la contraseña
     const encryptedPassword = bcrypt.hashSync(password, 10);
     // Crear un nuevo usuario en la base de datos
     const newUser = await User.create({
-        name,
+        user_name: username,
         email,
         password: encryptedPassword,
-      role_id: 1 // Establecer el rol del usuario
+        role_id: 3 // Establecer el rol del usuario
     });
     // Devolver la información del nuevo usuario
     return res.json(newUser);
