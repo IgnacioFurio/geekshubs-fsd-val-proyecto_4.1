@@ -24,7 +24,7 @@ authController.createUserProfile = async (req, res) => {
     } 
 };
 
-authController.userLogin = (req,res) => {return res.send('User connected')};
+ authController.userLogin = (req,res) => {return res.send('User connected')};
 authController.updateUserProfile = (req,res) => {return res.send('Cambiar información de User')};
 
 
