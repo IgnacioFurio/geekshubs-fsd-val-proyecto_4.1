@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Doctor.init({
-    collegiate_member: DataTypes.INTEGER,
+    collegiate_member: DataTypes.STRING,
     contract_at: DataTypes.DATEONLY,
     contract_until: DataTypes.DATEONLY,
     user_id: DataTypes.INTEGER

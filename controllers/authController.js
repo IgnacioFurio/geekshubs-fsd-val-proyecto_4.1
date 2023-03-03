@@ -57,4 +57,4 @@ const userLogin = async (req, res) => {
   module.exports = userLogin;
 
 
-  module.exports = authController;
+module.exports = authController;
