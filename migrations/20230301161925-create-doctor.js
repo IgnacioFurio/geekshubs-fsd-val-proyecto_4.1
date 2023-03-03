@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       collegiate_member: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       contract_at: {
         type: Sequelize.DATEONLY
