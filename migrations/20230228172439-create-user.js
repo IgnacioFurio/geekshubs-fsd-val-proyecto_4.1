@@ -10,15 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       email: {
         type: Sequelize.STRING,
         unique: true
       },
       password: {
-        type: Sequelize.STRING,
-        unique: true
+        type: Sequelize.STRING
       },      
       role_id: {
         type: Sequelize.INTEGER,
