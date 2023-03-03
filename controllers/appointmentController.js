@@ -1,6 +1,6 @@
 const appointmentController = {};
 
-appointmentController.getTodayAppointment = (req,res) => async (req, res) => {
+appointmentController.getTodayAppointment = async (req, res) => {
     try {
       // Obtenemos la fecha actual en formato YYYY-MM-DD
       const today = new Date().toISOString().slice(0, 10);

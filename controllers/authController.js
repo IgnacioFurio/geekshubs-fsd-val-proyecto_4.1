@@ -17,7 +17,11 @@ authController.createUserProfile = async (req, res) => {
         role_id: 3 // Establecer el rol del usuario
     });
     // Devolver la información del nuevo usuario
-    return res.json(newUser);
+    return res.json({
+      success: true,
+      message: "User registered",
+      data: newUser
+  });
     } catch (error) {
     // Enviar un mensaje de error si hay algún problema
     return res.status(500).send(error.message);
@@ -30,7 +34,7 @@ authController.updateUserProfile = (req,res) => {return res.send('Cambiar inform
 const userLogin = async (req, res) => {
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({ where: { email } });
+      const user = await User.findOne( {email: email });
   
       if (!user) {
         return res.status(401).json({ message: 'Invalid email or password' });
