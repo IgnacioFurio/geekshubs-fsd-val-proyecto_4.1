@@ -29,6 +29,4 @@ authController.updateUserProfile = (req,res) => {return res.send('Cambiar inform
 
 
 
-
-
-module.exports = authController;
+  module.exports = authController;
