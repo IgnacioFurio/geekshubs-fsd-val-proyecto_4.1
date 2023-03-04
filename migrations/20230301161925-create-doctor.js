@@ -11,6 +11,18 @@ module.exports = {
       },
       collegiate_member: {
         type: Sequelize.STRING
+      },      
+      name: {
+        type: Sequelize.STRING
+      },
+      surname: {
+        type: Sequelize.STRING
+      },
+      DNI: {
+        type: Sequelize.STRING
+      },
+      phone_number:{
+        type: Sequelize.STRING
       },
       contract_at: {
         type: Sequelize.DATEONLY
