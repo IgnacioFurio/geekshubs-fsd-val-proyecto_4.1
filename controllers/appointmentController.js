@@ -46,7 +46,7 @@ appointmentController.createAppointment = async (req,res) => {
         {
       date_time,
       patient_id: patientId,
-      doctor_id: req.doctor_id, // El ID del doctor se obtiene del token de autenticación
+      doctor_id: req.doctor_id,
     })
 
     // Devolver una respuesta con los detalles de la cita creada
