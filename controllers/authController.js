@@ -31,7 +31,7 @@ authController.createUserProfile = async (req, res) => {
 authController.userLogin = async (req, res) => {
     try {
     const { email, password } = req.body;
-    const user = await User.findOne({{email: email }} );
+    const user = await User.findOne({where: {email: email }});
 
     if (!user) {
         return res.status(401).json({ message: 'Invalid email or password' });
