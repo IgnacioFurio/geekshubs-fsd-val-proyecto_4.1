@@ -62,7 +62,5 @@ authController.userLogin = async (req, res) => {
     }
 };
 
-authController.updateUserProfile = (req,res) => {return res.send('Cambiar información de User')};
-
 
 module.exports = authController;

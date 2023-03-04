@@ -36,6 +36,22 @@ userController.getUserProfile =  async (req, res) => {
     }
   };
 
-userController.updateUserProfile = (req,res) => {return res.send('Cambiar datos de Usuario')};
+userController.updateUserProfile = (req,res) => {
+  try {
+    const userId = req.userId;
+    
+
+
+    return res.json(
+      {
+        succes: true,
+        message: 'Cambiar datos de Usuario',
+        data: userId
+      }
+    );
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 
 module.exports = userController;
