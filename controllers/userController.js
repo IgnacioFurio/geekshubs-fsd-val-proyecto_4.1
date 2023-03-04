@@ -1,5 +1,6 @@
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
+
 const userController = {};
 
 userController.getUserProfile =  async (req, res) => {
