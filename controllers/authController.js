@@ -12,7 +12,7 @@ authController.createUserProfile = async (req, res) => {
     // Crear un nuevo usuario en la base de datos
     const newUser = await User.create({
         user_name: username,
-        email,
+        email: email,
         password: encryptedPassword,
         role_id: 3 // Establecer el rol del usuario
     });
@@ -40,7 +40,7 @@ authController.userLogin = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-        return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(401).json({ message: 'Invalid user or password' });
     }
 
     const token = jwt.sign(

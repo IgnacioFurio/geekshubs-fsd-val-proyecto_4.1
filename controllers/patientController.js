@@ -1,5 +1,3 @@
-const { Patient } = require('../models');
-
 const patientController = {};
 
 patientController.createPatient = async (req,res) => {

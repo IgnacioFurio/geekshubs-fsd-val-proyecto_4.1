@@ -16,7 +16,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       DNI: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       phone_number:{
         type: Sequelize.STRING
