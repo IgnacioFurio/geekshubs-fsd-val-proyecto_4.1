@@ -5,9 +5,9 @@ const { route } = require('./patientRoutes');
 const router = require('express').Router();
 
 
-// router.get('/', appointmentController.getAppointment);
-router.get('/', appointmentController.getTodayAppointment);
+// router.get('/', appointmentController.getTodayAppointment);
 router.post('/', appointmentController.createAppointment);
+router.get('/', appointmentController.getAppointment);
 router.put('/', appointmentController.updateAppointment);
 router.delete('/', appointmentController.deleteAppointment);
 
