@@ -2,7 +2,7 @@ const { Patient } = require('../models');
 
 const patientController = {};
 
-patientController.createPatient = (req,res) => {
+patientController.createPatient = async (req,res) => {
     try {
         const {name, surname, DNI, phone_number, post_code, birth, allergy, surgery, user_id} = req.body;
 
@@ -18,7 +18,7 @@ patientController.createPatient = (req,res) => {
             user_id: user_id
         };
 
-        const patient = Patient.create(newPatient)
+        const patient = await Patient.create(newPatient)
 
         return res.json(
             {
