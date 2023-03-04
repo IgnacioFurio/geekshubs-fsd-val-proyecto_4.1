@@ -34,7 +34,32 @@ const { Appointment, Patient, Doctor, User }  = require('../models');
 //       return res.status(500).send(error.message);
 //     }
 // };
-appointmentController.createAppointment = (req,res) => {return res.send('Cita creada')};
+
+appointmentController.createAppointment = async (req,res) => {
+    try {
+    // Extraer los datos de la solicitud
+    const { date_time, patientId } = req.body;
+   
+
+    // Crear la cita en la base de datos
+    const appointment = await Appointment.create(
+        {
+      date_time,
+      patient_id: patientId,
+      doctor_id: req.doctor_id,
+    })
+
+    // Devolver una respuesta con los detalles de la cita creada
+    return res.status(201).json({
+      success: true,
+      message: 'Appointment created successfully',
+      data: appointment,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
 appointmentController.getAppointment = (req,res) => {return res.send('Consultar citas')};
 appointmentController.updateAppointment = (req,res) => {return res.send('Cita cambiada')};
 appointmentController.deleteAppointment = (req,res) => {return res.send('Cita eliminada')};
