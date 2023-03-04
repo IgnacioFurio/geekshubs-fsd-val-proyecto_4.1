@@ -18,10 +18,10 @@ authController.createUserProfile = async (req, res) => {
     });
     // Devolver la información del nuevo usuario
     return res.json({
-      success: true,
-      message: "User registered",
-      data: newUser
-  });
+        success: true,
+        message: "User registered",
+        data: newUser
+    });
     } catch (error) {
     // Enviar un mensaje de error si hay algún problema
     return res.status(500).send(error.message);
@@ -29,37 +29,34 @@ authController.createUserProfile = async (req, res) => {
 };
 
 authController.userLogin = async (req, res) => {
-  try {
+    try {
     const { email, password } = req.body;
     const user = await User.findOne( {email: email });
 
     if (!user) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(401).json({ message: 'Invalid email or password' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(401).json({ message: 'Invalid email or password' });
     }
 
     const token = jwt.sign(
-      { userId: user.id, roleId: user.role_id },
-      process.env.JWT_SECRET,
-      { expiresIn: '999d' }
+        { userId: user.id, roleId: user.role_id },
+        process.env.JWT_SECRET,
+        { expiresIn: '999d' }
     );
 
     return res.json({ token });
-  } catch (error) {
+    } catch (error) {
     console.error(error);
     return res.status(500).json({ message: 'Internal server error' });
-  }
+    }
 };
 
 authController.updateUserProfile = (req,res) => {return res.send('Cambiar información de User')};
-
-
- 
 
 
 module.exports = authController;
