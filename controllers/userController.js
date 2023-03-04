@@ -4,7 +4,7 @@ const userController = {};
 userController.getUserProfile =  async (req, res) => {
     try {
       const userId = req.userId; // obtenemos el userId del token en el middleware de autenticación
-      const user = await User.findOne({ where: { id: userId } });
+      const user = await User.findOne({ id: userId } );
   
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
