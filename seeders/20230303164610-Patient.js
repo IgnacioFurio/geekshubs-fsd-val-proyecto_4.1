@@ -15,6 +15,7 @@ module.exports = {
       {name: "Pijus", surname: "Magnificus", DNI: "75634887M", phone_number: "+34 686 654 438", post_code: "18485", birth: "1963-02-22", allergy:"Nikel", surgery: "", user_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
       {name: "Incontinencia", surname: "Summa", DNI: "274837653R", phone_number: "+34 696 467 654", post_code: "18345", birth: "1991-02-22", allergy:"Mint", surgery: "Dental implant", user_id: 4, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
       {name: "Traviesus", surname: "Maximus", DNI: "000000001A", phone_number: "+34 629 946 876", post_code: "18057", birth: "1987-02-22", allergy:"", surgery: "", user_id: 1, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {name: "Laelia", surname: "Pacatius", DNI: "15846372C", phone_number: "+34 657 857 332", post_code: "18054", birth: "1976-02-22", allergy:"", surgery: "", user_id: 7, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
     ], {}); 
   },
 

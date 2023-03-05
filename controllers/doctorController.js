@@ -4,9 +4,15 @@ const doctorController = {};
 
 doctorController.getDoctorAppointment = async (req,res) => {
     try {
-        const doctor = req.userId;
-        console.log(doctor);
-        const newConsult = await Doctor.findAll()
+        const doctorId = req.userId;
+        console.log(doctorId);
+        const newConsult = await Doctor.findAll(
+            {
+                where: {
+                    user_id: doctorId
+                }
+            }
+        )
 
         return res.json(
         {
