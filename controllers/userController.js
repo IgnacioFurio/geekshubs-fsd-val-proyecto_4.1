@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Patient } = require('../models');
 const bcrypt = require('bcrypt');
 
 const userController = {};
@@ -12,13 +12,26 @@ userController.getUserProfile =  async (req, res) => {
         {
           attributes: 
           {
-            exclude: ["password"]
+            exclude: ["id", "password", "role_id"]
           },
+          include: 
+          {
+            model: Patient,
+            attributes: 
+            {
+              exclude: ["id", "user_id"]
+            }
+          }
         }
       );
   
       if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+        return res.status(504).json(
+          { 
+            succes: false,
+            message: 'User not found' 
+          }
+        );
       }
   
       return res.json(
@@ -28,11 +41,14 @@ userController.getUserProfile =  async (req, res) => {
           data: user
         }
       );
+
     } catch (error) {
-      console.error(error);
+
       return res.status(500).json(
         { 
-          message: 'Internal server error' 
+          succes: false,
+          message: 'Something went wront.',
+          data: error.message 
         }
       );
     }
