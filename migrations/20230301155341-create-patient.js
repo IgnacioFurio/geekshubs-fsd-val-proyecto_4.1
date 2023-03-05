@@ -10,23 +10,29 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allownull: false
       },
       surname: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       DNI: {
         type: Sequelize.STRING,
-        unique: true
+        unique: true,
+        allowNull: false
       },
       phone_number:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allownull: false
       },
       post_code: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allownull: false
       },
       birth: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATEONLY,
+        allownull: false
       },
       allergy: {
         type: Sequelize.STRING
