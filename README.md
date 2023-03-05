@@ -68,3 +68,54 @@ Tecnologías utilizadas:
 5. ``` $ Ejecutamos los seeders ```
 6. ``` $ npm ejecutar dev ```
 7. ...
+
+## Realizacion de endpoints
+<detalles>
+<summary>Realizacion de endpoints</summary>
+
+  - Creacion Perfil usuario
+
+
+Se ha realizado en el controlador `authController` mediante la función createUserProfile  se encarga de crear un nuevo usuario en la base de datos, recibiendo los datos del usuario a través del cuerpo de la solicitud. Primero, se verifica si los campos obligatorios están completos. Si no, la función devuelve un mensaje de error. Si todo está en orden, se cifra la contraseña y se crea un nuevo usuario en la base de datos. La función devuelve un mensaje de éxito y los datos del nuevo usuario creado.
+
+
+   - Login
+
+
+Se ha realizado en el controlador `authController` mediante la función  userLogin se encarga de autenticar a un usuario existente en la base de datos. Recibe las credenciales del usuario (correo electrónico y contraseña) a través del cuerpo de la solicitud. La función busca al usuario en la base de datos y verifica si la contraseña coincide con la contraseña cifrada almacenada en la base de datos. Si todo está en orden, se emite un token de autenticación JWT que contiene la información del usuario, como su ID de usuario, nombre de usuario y rol. La función devuelve el token de autenticación y un mensaje de éxito.
+
+
+- Perfil usuario
+
+
+Se realiza en el controlador `userController` con la funcion .getUserProfile para obtener el perfil del usuario, incluyendo los pacientes que han registrado,requiere autenticación a través del middleware de verificación de tokens.
+
+
+- Actualizacion perfil usuario
+
+
+Para actualizar la información del perfil del usuario, como el nombre de usuario y la contraseña, requiere autenticación a través del middleware de verificación de tokens.
+
+
+-   Crear cita
+
+
+Se realiza mediante createAppointment función encargada de crear una cita en la base de datos a partir de la información proporcionada en la solicitud con los siguientes parámetros:
+
+
+`date_time`: Fecha y hora de la cita en formato de fecha y hora.
+`patientId`: ID del paciente que va a tener la cita.
+
+
+-  Actualizar cita
+
+Se obtiene con la función updateAppointment actualizando la información de una cita en la base de datos a partir del ID proporcionado en la solicitud.
+
+
+    -  Borrar cita
+
+Se realiza mediante la función deleteAppointment  elimina una cita de la base de datos a partir del ID proporcionado en la solicitud y validar que pertenezca al usuario que hizo la solicitud.
+ 
+
+    
+</detalles>
