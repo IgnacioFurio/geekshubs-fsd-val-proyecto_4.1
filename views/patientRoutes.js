@@ -5,6 +5,6 @@ const router = require('express').Router();
 
 router.put('/new', verifyToken, patientController.createPatient);
 router.get('/profile', verifyToken, patientController.getPatientInfo);
-router.get('/appointment/', patientController.getPatientAppointment);
+router.get('/appointment/', verifyToken, patientController.getPatientAppointment);
 
 module.exports = router;

@@ -1,4 +1,5 @@
-const { Patient} = require('../models');
+const { pathToFileURL } = require('url');
+const { Patient, Appointment} = require('../models');
 
 const patientController = {};
 
@@ -40,7 +41,6 @@ patientController.createPatient = async (req,res) => {
 patientController.getPatientInfo = async (req,res) => {
     try {
         const userId = req.userId;
-        console.log(Patient);
         const patientInfo = await Patient.findAll(
             {
                 where: 
@@ -49,7 +49,7 @@ patientController.getPatientInfo = async (req,res) => {
                     }
             }
         );
-            console.log(patientInfo);
+
         return res.json(
             {
                 succes: true,
@@ -61,7 +61,34 @@ patientController.getPatientInfo = async (req,res) => {
         return res.status(500).send(error.message)
     }
 };
-patientController.getPatientAppointment = (req,res) => {return res.send('Póximas citas')};
+patientController.getPatientAppointment = async (req,res) => {
+    
+    try {
+        const patientId = req.userId
+
+        const patientAppointment = await Patient.findAll(
+            {
+                where: 
+                {
+                    user_id: patientId
+                },
+                include: {
+                    model: Appointment,
+
+                }
+            }
+        )
+
+        return res.json({
+            succes: true,
+            message:'Póximas citas',
+            data: patientAppointment
+        })
+    } catch (error) {
+        
+    }
+    
+};
 
 
 module.exports = patientController;
