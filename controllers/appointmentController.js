@@ -127,6 +127,15 @@ appointmentController.deleteAppointment = async(req,res) => {
 
     const { appointmentId } = req.body
 
+    if(appointmentId === ""){
+      return res.status(502).json(
+        {
+          succes: false,
+          message: 'Empty field.'
+        }
+      );
+    };
+
     const cancelAppointment = await Appointment.destroy(
       {
         where: 
@@ -138,16 +147,21 @@ appointmentController.deleteAppointment = async(req,res) => {
 
     return res.json(
       { 
-        message: 'Appointment deleted successfully' 
+        succes: true,
+        message: 'Appointment deleted successfully',
+        data: cancelAppointment 
       }
     );
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal server error' });
+    return res.status(500).json(
+      { 
+        succes: false,
+        message: 'Something went wrong',
+        error: error.message 
+      }
+    );
   }
 };  
-
-
-
 
 module.exports = appointmentController;
