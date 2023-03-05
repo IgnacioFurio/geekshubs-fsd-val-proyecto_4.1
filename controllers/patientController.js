@@ -83,7 +83,13 @@ patientController.getPatientInfo = async (req,res) => {
             }
         )
     } catch (error) {
-        return res.status(500).send(error.message)
+        return res.status(500).json(
+            {
+                succes: false,
+                message: 'Something went wrong.',
+                error: error.message
+            }
+        );
     };
 };
 patientController.getPatientAppointment = async (req,res) => {
