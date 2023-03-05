@@ -84,7 +84,37 @@ appointmentController.getAppointment = async (req,res) => {
     return res.status(500).json({ message: 'Internal server error' });
   }
 };
-appointmentController.updateAppointment = (req,res) => {return res.send('Cita cambiada')};
-appointmentController.deleteAppointment = (req,res) => {return res.send('Cita eliminada')};
+appointmentController.updateAppointment = async(req,res) => {
+  try {
+    const appointmentId = req.params.id;
+    const { date_time } = req.body;
+
+    const appointment = await Appointment.findOne({ where: { id: appointmentId } });
+    if (!appointment) {
+      return res.status(404).json({ message: 'Appointment not found' });
+    }
+
+    // Actualizar la cita con los nuevos valores
+    appointment.date_time = date_time || appointment.date_time;
+   
+
+    await appointment.save();
+
+    return res.json({
+      success: true,
+      message: 'Appointment updated successfully',
+      data: appointment,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
+  
+
+
+
 
 module.exports = appointmentController;
