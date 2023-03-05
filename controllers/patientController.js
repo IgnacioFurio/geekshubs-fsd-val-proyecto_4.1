@@ -5,7 +5,9 @@ const patientController = {};
 
 patientController.createPatient = async (req,res) => {
     try {
-        const {name, surname, DNI, phone_number, post_code, birth, allergy, surgery, user_id} = req.body;
+        const {name, surname, DNI, phone_number, post_code, birth, allergy, surgery} = req.body;
+
+        const userId = req.userId
 
         if(name === "" || surname === "" || DNI === "" || phone_number === "" || post_code === "" || birth === ""){
             return res.status(502).json(
@@ -25,26 +27,27 @@ patientController.createPatient = async (req,res) => {
             birth: birth,
             allergy: allergy,
             surgery: surgery,
-            user_id: user_id
+            user_id: userId
         };
 
-        const patient = await Patient.create(newPatient)
+        const patient = await Patient.create(newPatient);
 
         return res.json(
             {
                 succes: true,
-                message: 'New Patient file created',
+                message: 'New Patient file created.',
                 data: patient
             }
         );
     } catch (error) {
         return res.status(500).json(
-            {
-                succes: true,
-                message: "Something went wrong",
-                error: error.message
-            })
-        }
+                {
+                    succes: true,
+                    message: "Something went wrong.",
+                    error: error.message
+                }
+            );
+        };
 };
 
 patientController.getPatientInfo = async (req,res) => {
