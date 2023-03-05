@@ -1,39 +1,6 @@
+const { Appointment, Patient }  = require('../models');
+
 const appointmentController = {};
-const { Appointment, Patient, Doctor, User }  = require('../models');
-
-
-// appointmentController.getTodayAppointment = async (req, res) => {
-    //     try {
-        //       // Obtenemos la fecha actual en formato YYYY-MM-DD
-        //       const today = new Date().toISOString().slice(0, 10);  
-//       // Buscamos todas las citas de la fecha actual
-//       const appointments = await Appointment.findAll({
-//         where: {
-//           date_time: today,
-//         },
-//         include: [
-//           // Incluimos información del paciente y doctor de cada cita
-//           {
-//             model: Patient,
-//             attributes: ['name', 'surname', 'DNI', 'phone_number', 'post_code'],
-//           },
-//           {
-//             model: Doctor,
-//             attributes: ['collegiate_member'],
-//             include: [
-//               {
-//                 model: User,
-//                 attributes: ['name'],
-//               },
-//             ],
-//           },
-//         ],
-//       });  
-//       return res.json(appointments);
-//     } catch (error) {
-//       return res.status(500).send(error.message);
-//     }
-// };
 
 appointmentController.createAppointment = async (req,res) => {
   try {
@@ -76,77 +43,125 @@ appointmentController.createAppointment = async (req,res) => {
   }
 };
 appointmentController.getAppointment = async (req,res) => {
+  
   try {
-    const appointment = await Appointment.findByPk(req.params.id);
-    if (!appointment) {
-      return res.status(404).json({ message: 'Appointment not found' });
-    }
 
     const userId = req.userId;
-    if (appointment.user_id !== userId) {
-      return res.status(403).json({ message: 'Forbidden. Appointment does not belong to user.' });
+
+    const appointment = await Appointment.findByPk(
+      userId,
+      {
+        include: 
+        {
+          model: Patient,
+          attributes: 
+          {
+            exclude: ["id", "user_id"]
+          }
+        },
+        attributes: 
+        {
+          exclude: ["patient_id", "doctor_id"]
+        }      
+      }
+    );
+
+    if (!appointment) {
+      return res.status(503).json({ message: 'Appointment not found.' });
     }
 
-    return res.json({
-      message: 'Appointment found',
-      appointment: appointment,
-      belongsToUser: true
-    });
+    return res.json(
+      {
+        succes: true,
+        message: 'Appointment found.',
+        data: appointment,
+      }
+    );
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal server error' });
-  }
+    return res.status(500).json({ message: 'Something went wrong.' });
+  };
 };
 appointmentController.updateAppointment = async(req,res) => {
   try {
-    const appointmentId = req.params.id;
-    const { date_time } = req.body;
 
-    const appointment = await Appointment.findOne({ where: { id: appointmentId } });
-    if (!appointment) {
-      return res.status(404).json({ message: 'Appointment not found' });
-    }
+    const { appointmentId, newDate } = req.body;
 
-    // Actualizar la cita con los nuevos valores
-    appointment.date_time = date_time || appointment.date_time;
-   
+    if( appointmentId === "" || newDate === ""){
+      return res.status(502).json(
+        {
+          succes: false,
+          message: 'Empty field.'
+        }
+      );
+    };
 
-    await appointment.save();
+    const updateAppointment = await Appointment.update(
+      {
+        date_time: newDate
+      },
+      { 
+        where: { id: appointmentId } 
+      }
+    );
 
-    return res.json({
-      success: true,
-      message: 'Appointment updated successfully',
-      data: appointment,
-    });
+    return res.json(
+      {
+        success: true,
+        message: 'Appointment updated successfully',
+        data: updateAppointment
+      }
+    );
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Internal server error' });
+    return res.status(500).json(
+      { 
+        succes: false,
+        message: 'Something went wrong' ,
+        error: error.message
+      }
+    );
   }
 };
-
-
 appointmentController.deleteAppointment = async(req,res) => {
   try {
-    const appointment = await Appointment.findByPk(req.params.id);
-    if (!appointment) {
-      return res.status(404).json({ message: 'Appointment not found' });
-    }
 
-    const userId = req.userId;
-    if (appointment.user_id !== userId) {
-      return res.status(403).json({ message: 'Forbidden. Appointment does not belong to user.' });
-    }
+    const { appointmentId } = req.body
 
-    await appointment.destroy();
+    if(appointmentId === ""){
+      return res.status(502).json(
+        {
+          succes: false,
+          message: 'Empty field.'
+        }
+      );
+    };
 
-    return res.json({ message: 'Appointment deleted successfully' });
+    const cancelAppointment = await Appointment.destroy(
+      {
+        where: 
+        {
+          id: appointmentId
+        }
+      }
+    );
+
+    return res.json(
+      { 
+        succes: true,
+        message: 'Appointment deleted successfully',
+        data: cancelAppointment 
+      }
+    );
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal server error' });
+    return res.status(500).json(
+      { 
+        succes: false,
+        message: 'Something went wrong',
+        error: error.message 
+      }
+    );
   }
 };  
-
-
-
 
 module.exports = appointmentController;
