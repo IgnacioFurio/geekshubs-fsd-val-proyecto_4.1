@@ -18,7 +18,6 @@
     <li><a href="#endpoints">Realizacion de endpoints</a></li>
     <li><a href="#licencia">Licencia</a></li>
     <li><a href="#webgrafia">Webgrafia</a></li>
-    <li><a href="#desarrollo">Desarrollo</a></li>
     <li><a href="#agradecimientos">Agradecimientos</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ol>
@@ -38,10 +37,6 @@ Este proyecto requería una API funcional backend para el sistema de gestión de
 ## Stack
 Tecnologías utilizadas:
 <div alinear="centro">
-<a href="https://www.mongodb.com/">
-    <img src= "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"/>
-    <img src=""/>
-</a>
 <a href="https://www.expressjs.com/">
     <img src= "https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
 </a>
@@ -112,10 +107,57 @@ Se realiza mediante createAppointment función encargada de crear una cita en la
 Se obtiene con la función updateAppointment actualizando la información de una cita en la base de datos a partir del ID proporcionado en la solicitud.
 
 
-    -  Borrar cita
+-  Borrar cita
 
 Se realiza mediante la función deleteAppointment  elimina una cita de la base de datos a partir del ID proporcionado en la solicitud y validar que pertenezca al usuario que hizo la solicitud.
  
 
+  - Consultas del doctor
     
+
+Se define con la función getDoctorAppointment que  permite obtener la información de los doctores y sus citas asociadas. Para ello, primero se busca el doctor mediante su user_id y se incluyen los datos de las citas asociadas a través del modelo Appointment. Además, se utiliza la opción include para añadir los datos de los pacientes asociados a cada cita mediante el modelo Patient. Finalmente, se devuelve un objeto JSON con la información solicitada. En resumen, se obtiene la información de los doctores y las citas asociadas, lo que puede ser de utilidad para la gestión de citas en una clínica dental.
+
+
+ - Registro pacientes
+
+
+ Se realiza con la función `createPatient` que hace un nuevo registro de paciente en la base de datos, verificando que se haya proporcionado toda la información mediante siguientes parámetros en el req.body (en formato JSON):
+
+`name`: string
+`surname`: string
+`DNI`:string
+`phone_number`: string
+`post_code`: string
+`birth`: date
+`allergy`: string
+ `surgery`: string
+
+
+ - Perfil paciente
+
+
+ Se obtiene  con la función getPatientInfo que proporciona información del paciente logueado en la aplicación, incluyendo los datos personales y de contacto, así como información adicional proporcionada en su registro.
+
+ - Registro citas paciente
+
+ La realizamos con la `getPatientAppointment` y obtiene todas las citas médicas programadas para el paciente logueado en la aplicación, incluyendo la información del médico responsable de cada cita.
 </detalles>
+
+## Licencia
+
+Este proyecto se encuentra bajo licencia de "MIT"
+
+## Webgrafia:
+
+Para conseguir nuestro objetivo hemos recopilado información de:
+- link a repositorios 
+- link a documentacion de librerias externas
+- Videos YouTube
+- ...
+
+## Contacto
+
+<a href = "mailto:micorreoelectronico@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+<a href="https://www.linkedin.com/in/linkedinUser/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+</p>
+   
