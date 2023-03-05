@@ -5,26 +5,43 @@ const jwt = require('jsonwebtoken');
 
 authController.createUserProfile = async (req, res) => {
     try {
-    // Recuperar información de la petición
     const { username, email, password } = req.body;
-    // Cifrar la contraseña
+
     const encryptedPassword = bcrypt.hashSync(password, 10);
-    // Crear un nuevo usuario en la base de datos
-    const newUser = await User.create({
+
+    const newUser = await User.create(
+        {
         user_name: username,
         email: email,
         password: encryptedPassword,
-        role_id: 3 // Establecer el rol del usuario
-    });
-    // Devolver la información del nuevo usuario
-    return res.json({
+        role_id: 3
+        }
+    );
+
+    if(newUser.user_name === ""){
+        return res.status(501).json(
+            {
+                succes: false,
+                message: "You must have an user name",
+                error: error.message
+            }
+        );
+    };
+    return res.json(
+        {
         success: true,
         message: "User registered",
         data: newUser
-    });
+        }
+    );
     } catch (error) {
-    // Enviar un mensaje de error si hay algún problema
-    return res.status(500).send(error.message);
+    return res.status(500).json(
+        {
+            succes: false,
+            message: 'Invalid credentials',
+            error: error.message
+        }
+        );
     } 
 };
 
