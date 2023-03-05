@@ -7,6 +7,15 @@ patientController.createPatient = async (req,res) => {
     try {
         const {name, surname, DNI, phone_number, post_code, birth, allergy, surgery, user_id} = req.body;
 
+        if(name === "" || surname === "" || DNI === "" || phone_number === "" || post_code === "" || birth === ""){
+            return res.status(502).json(
+                {
+                    succes: false,
+                    message: "Empty field"
+                }
+            );
+        };
+
         const newPatient = {
             name: name,
             surname: surname,
