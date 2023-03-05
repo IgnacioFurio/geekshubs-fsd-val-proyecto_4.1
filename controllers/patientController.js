@@ -1,3 +1,5 @@
+const { Patient} = require('../models');
+
 const patientController = {};
 
 patientController.createPatient = async (req,res) => {
@@ -35,7 +37,30 @@ patientController.createPatient = async (req,res) => {
         }
 };
 
-patientController.getPatientInfo = (req,res) => {return res.send('get patient information')};
+patientController.getPatientInfo = async (req,res) => {
+    try {
+        const userId = req.userId;
+        console.log(Patient);
+        const patientInfo = await Patient.findAll(
+            {
+                where: 
+                    {
+                        user_id: userId
+                    }
+            }
+        );
+            console.log(patientInfo);
+        return res.json(
+            {
+                succes: true,
+                message: 'Patient information',
+                data: patientInfo
+            }
+        )
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+};
 patientController.getPatientAppointment = (req,res) => {return res.send('Póximas citas')};
 
 
