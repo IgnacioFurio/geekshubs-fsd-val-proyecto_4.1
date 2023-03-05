@@ -36,32 +36,45 @@ const { Appointment, Patient, Doctor, User }  = require('../models');
 // };
 
 appointmentController.createAppointment = async (req,res) => {
-    try {
-   // Extraer los datos de la solicitud
-   const { date_time, patientId } = req.body;
-   
+  try {
 
-   // Crear la cita en la base de datos
-   const appointment = await Appointment.create(
-       {
-     date_time,
-     patient_id: patientId,
-     doctor_id: req.doctor_id,
-   })
+    const { date_time, patient_id, doctor_id } = req.body;
+  
+    if(date_time === "" || patient_id === "" || doctor_id  === ""){
+      return res.status(502).json(
+        {
+          succes: false,
+          message: 'Empty field',
+        }
+      );
+    };
 
-   // Devolver una respuesta con los detalles de la cita creada
-   return res.status(201).json({
-     success: true,
-     message: 'Appointment created successfully',
-     data: appointment,
-   });
- } catch (error) {
-   console.error(error);
-   return res.status(500).json({ message: 'Internal server error' });
- }}
+    const appointment = await Appointment.create(
+      {
+        date_time: date_time,
+        patient_id: patient_id,
+        doctor_id: doctor_id,
+      }
+    );
 
-
-
+  
+    return res.json(
+      {
+        success: true,
+        message: 'Appointment created successfully',
+        data: appointment,
+      }
+    );
+  } catch (error) {
+    return res.status(500).json(
+      { 
+        succes: false,
+        message: 'Something went wrong.',
+        error: error.message
+      }
+    );  
+  }
+};
 appointmentController.getAppointment = async (req,res) => {
   try {
     const appointment = await Appointment.findByPk(req.params.id);
