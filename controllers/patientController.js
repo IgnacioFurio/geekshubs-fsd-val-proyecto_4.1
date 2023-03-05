@@ -40,9 +40,15 @@ patientController.createPatient = async (req,res) => {
 patientController.getPatientInfo = async (req,res) => {
     try {
         const userId = req.userId;
-        console.log(userId);
-        const patientInfo = await Patient.findByPk()
-
+        console.log(Patient);
+        const patientInfo = await Patient.findAll(
+            {
+                where: 
+                    {
+                        user_id: userId
+                    }
+            }
+        );
             console.log(patientInfo);
         return res.json(
             {
