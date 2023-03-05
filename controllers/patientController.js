@@ -1,5 +1,5 @@
 const { pathToFileURL } = require('url');
-const { Patient, Appointment, Doctor} = require('../models');
+const { User, Patient, Appointment, Doctor} = require('../models');
 
 const patientController = {};
 
@@ -49,17 +49,30 @@ patientController.createPatient = async (req,res) => {
             );
         };
 };
-
 patientController.getPatientInfo = async (req,res) => {
+
     try {
         const userId = req.userId;
-        const patientInfo = await Patient.findAll(
+
+        const patientInfo = await User.findAll(
             {
                 where: 
                     {
-                        user_id: userId
+                        id: userId
+                    },
+                attributes: 
+                    {
+                    exclude: ["id", "password","role_id"]
+                    },
+                include: 
+                    {
+                    model: Patient,
+                    attributes: 
+                        {
+                        exclude: ["id", "user_id"]
+                        }
                     }
-            }
+            }   
         );
 
         return res.json(
@@ -71,7 +84,7 @@ patientController.getPatientInfo = async (req,res) => {
         )
     } catch (error) {
         return res.status(500).send(error.message)
-    }
+    };
 };
 patientController.getPatientAppointment = async (req,res) => {
     
