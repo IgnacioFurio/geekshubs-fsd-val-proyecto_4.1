@@ -41,14 +41,8 @@ patientController.getPatientInfo = async (req,res) => {
     try {
         const userId = req.userId;
         console.log(userId);
-        const patientInfo = await Patient.findAll(
-            {
-                where: 
-                    {
-                        user_id: userId
-                    }
-            }
-        );
+        const patientInfo = await Patient.findByPk()
+
             console.log(patientInfo);
         return res.json(
             {
