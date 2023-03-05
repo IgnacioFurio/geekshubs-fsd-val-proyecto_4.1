@@ -114,7 +114,7 @@ patientController.getPatientAppointment = async (req,res) => {
                         model: Doctor,
                         attributes: 
                         {
-                            exclude: ["DNI", "phone_number", "contract_at", "contract_until", "user_id", "createdAt", "updatedAt"]
+                            exclude: ["id","DNI", "phone_number", "contract_at", "contract_until", "user_id", "createdAt", "updatedAt"]
                         }
                     }
                 }
