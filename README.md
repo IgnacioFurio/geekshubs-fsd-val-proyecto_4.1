@@ -155,6 +155,11 @@ Para conseguir nuestro objetivo hemos recopilado información de:
 - Videos YouTube
 - ...
 
+## Agradecimientos:
+
+Agradezco a mi compañero Ignacio por el apoyo,entendimiento y comprension.
+
+
 ## Contacto
 
 <a href = "mailto:micorreoelectronico@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
