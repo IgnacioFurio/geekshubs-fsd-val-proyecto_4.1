@@ -124,14 +124,11 @@ appointmentController.updateAppointment = async(req,res) => {
 };
 appointmentController.deleteAppointment = async(req,res) => {
   try {
+
     const appointment = await Appointment.findByPk(req.params.id);
+    console.log(appointment);
     if (!appointment) {
       return res.status(404).json({ message: 'Appointment not found' });
-    }
-
-    const userId = req.userId;
-    if (appointment.user_id !== userId) {
-      return res.status(403).json({ message: 'Forbidden. Appointment does not belong to user.' });
     }
 
     await appointment.destroy();
