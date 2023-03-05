@@ -5,78 +5,110 @@ const jwt = require('jsonwebtoken');
 
 authController.createUserProfile = async (req, res) => {
     try {
-    const { username, email, password } = req.body;
+        const { username, email, password } = req.body;
 
-    const encryptedPassword = bcrypt.hashSync(password, 10);
+        const encryptedPassword = bcrypt.hashSync(password, 10);
 
-    if(username === "" || email === "" || password === ""){
-        return res.status(501).json(
+        if(username === "" || email === "" || password === ""){
+            return res.status(501).json(
+                {
+                    succes: false,
+                    message: "You must fill all the fields"
+                }
+            );
+        };
+
+        const newUser = await User.create(
             {
-                succes: false,
-                message: "You must fill all the fields"
+            user_name: username,
+            email: email,
+            password: encryptedPassword,
+            role_id: 3
             }
         );
-    };
 
-    const newUser = await User.create(
-        {
-        user_name: username,
-        email: email,
-        password: encryptedPassword,
-        role_id: 3
-        }
-    );
-
-    return res.json(
-        {
-        success: true,
-        message: "User registered",
-        data: newUser
-        }
-    );
+        return res.json(
+            {
+            success: true,
+            message: "User registered",
+            data: newUser
+            }
+        );
     } catch (error) {
-    return res.status(500).json(
-        {
-            succes: false,
-            message: 'Invalid credentials',
-            error: error.message
-        }
+        return res.status(500).json(
+            {
+                succes: false,
+                message: 'Something went wrong',
+                error: error.message
+            }
         );
     } 
 };
 
 authController.userLogin = async (req, res) => {
     try {
-    const { email, password } = req.body;
-    const user = await User.findOne({where: {email: email }});
 
-    if (!user) {
-        return res.status(401).json({ message: 'Invalid email or password' });
-    }
+        const { email, password } = req.body;
 
-    const isMatch = await bcrypt.compare(password, user.password);
+        const user = await User.findOne(
+            {
+                where: 
+                {
+                    email: email 
+                }
+            }
+        );
 
-    if (!isMatch) {
-        return res.status(401).json({ message: 'Invalid user or password' });
-    }
-
-    const token = jwt.sign(
-        { 
-            userId: user.id,
-            userName: user.user_name,
-            roleId: user.role_id 
-        },
-        process.env.JWT_SECRET,
-        { 
-            expiresIn: '999d' 
+        if (!user) {
+            return res.status(501).json(
+                { 
+                    succes: false,
+                    message: 'Invalid credentials' 
+                }
+            );
         }
-    );
 
-    return res.json({ token });
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.status(501).json(
+                { 
+                    succes: false,
+                    message: 'Invalid credentials' 
+                }
+            );
+        }
+
+        const token = jwt.sign(
+            { 
+                userId: user.id,
+                userName: user.user_name,
+                roleId: user.role_id 
+            },
+            process.env.JWT_SECRET,
+            { 
+                expiresIn: '30d' 
+            }
+        );
+
+        return res.json(
+            { 
+                succes: true,
+                message: "We are glad that you trust us for your dental care.",
+                data: token 
+            }
+        );
+
     } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Internal server error' });
-    }
+
+        return res.status(500).json(
+            {
+                succes: false,
+                message: 'Something went wrong',
+                error: error.message
+            }
+        );
+    };
 };
 
 
