@@ -5,7 +5,7 @@ const doctorController = {};
 doctorController.getDoctorAppointment = async (req,res) => {
     try {
         const doctorId = req.userId;
-        console.log(doctorId);
+
         const newConsult = await Doctor.findAll(
             {
                 where: 
