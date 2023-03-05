@@ -62,11 +62,21 @@ userController.updateUserProfile = async (req,res) => {
     const userId = req.userId;
 
     if(userName === ""){
-      return res.send('Invalid name')
+      return res.status(502).json(
+        {
+          succes: false,
+          message: 'Empty field'
+        }
+      );
     };
 
     if(password === ""){
-      return res.send('Invalid password')
+      return res.status(502).json(
+        {
+          succes: false,
+          message: 'Empty field'
+        }
+      );
     };
 
     const encryptedPassword = bcrypt.hashSync(password, 10);
@@ -83,23 +93,27 @@ userController.updateUserProfile = async (req,res) => {
       }
     );
 
-console.log(updateUser);
-
     if(!updateUser){
       return res.send('User profile without changes')
     };
     
-
-
     return res.json(
       {
         succes: true,
-        message: 'User profile changed',
+        message: 'User profile changed succesfully',
         data: updateUser
       }
     );
+
   } catch (error) {
-    return res.status(500).send(error.message);
+    
+    return res.status(500).send(
+      { 
+        succes: false,
+        message: 'Something went wront.',
+        data: error.message 
+      }
+    );
   }
 };
 
