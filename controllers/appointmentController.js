@@ -84,32 +84,44 @@ appointmentController.getAppointment = async (req,res) => {
 };
 appointmentController.updateAppointment = async(req,res) => {
   try {
-    const appointmentId = req.params.id;
-    const { date_time } = req.body;
 
-    const appointment = await Appointment.findOne({ where: { id: appointmentId } });
-    if (!appointment) {
-      return res.status(404).json({ message: 'Appointment not found' });
-    }
+    const { appointmentId, newDate } = req.body;
 
-    // Actualizar la cita con los nuevos valores
-    appointment.date_time = date_time || appointment.date_time;
-   
+    if( appointmentId === "" || newDate === ""){
+      return res.status(502).json(
+        {
+          succes: false,
+          message: 'Empty field.'
+        }
+      );
+    };
 
-    await appointment.save();
+    const updateAppointment = await Appointment.update(
+      {
+        date_time: newDate
+      },
+      { 
+        where: { id: appointmentId } 
+      }
+    );
 
-    return res.json({
-      success: true,
-      message: 'Appointment updated successfully',
-      data: appointment,
-    });
+    return res.json(
+      {
+        success: true,
+        message: 'Appointment updated successfully',
+        data: updateAppointment
+      }
+    );
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Internal server error' });
+    return res.status(500).json(
+      { 
+        succes: false,
+        message: 'Something went wrong' ,
+        error: error.message
+      }
+    );
   }
 };
-
-
 appointmentController.deleteAppointment = async(req,res) => {
   try {
     const appointment = await Appointment.findByPk(req.params.id);
