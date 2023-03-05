@@ -1,4 +1,4 @@
-const { Doctor, Appointment } = require('../models')
+const { Doctor, Appointment, Patient } = require('../models')
 
 const doctorController = {};
 
@@ -8,11 +8,23 @@ doctorController.getDoctorAppointment = async (req,res) => {
         console.log(doctorId);
         const newConsult = await Doctor.findAll(
             {
-                where: {
+                where: 
+                {
                     user_id: doctorId
                 }, 
-                include: {
-                    model: Appointment
+                include: 
+                {
+                    model: Appointment,
+                    include:
+                    {
+                        model: Patient,
+                        attributes: {
+                            exclude:["createdAt", "updatedAt"]
+                        }
+                    },
+                    attributes: {
+                        exclude: ["patient_id", "doctor_id"]
+                    }
                 }
             }
         )
