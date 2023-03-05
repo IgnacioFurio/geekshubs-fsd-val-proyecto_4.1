@@ -9,6 +9,15 @@ authController.createUserProfile = async (req, res) => {
 
     const encryptedPassword = bcrypt.hashSync(password, 10);
 
+    if(username === "" || email === "" || password === ""){
+        return res.status(501).json(
+            {
+                succes: false,
+                message: "You must fill all the fields"
+            }
+        );
+    };
+
     const newUser = await User.create(
         {
         user_name: username,
@@ -18,15 +27,6 @@ authController.createUserProfile = async (req, res) => {
         }
     );
 
-    if(newUser.user_name === ""){
-        return res.status(501).json(
-            {
-                succes: false,
-                message: "You must have an user name",
-                error: error.message
-            }
-        );
-    };
     return res.json(
         {
         success: true,
