@@ -1,5 +1,5 @@
 const { pathToFileURL } = require('url');
-const { Patient, Appointment} = require('../models');
+const { Patient, Appointment, Doctor} = require('../models');
 
 const patientController = {};
 
@@ -74,7 +74,18 @@ patientController.getPatientAppointment = async (req,res) => {
                 },
                 include: {
                     model: Appointment,
-
+                    attributes: 
+                    {
+                        exclude: ["patient_id", "doctor_id"]
+                    },
+                    include: 
+                    {
+                        model: Doctor,
+                        attributes: 
+                        {
+                            exclude: ["DNI", "phone_number", "contract_at", "contract_until", "user_id", "createdAt", "updatedAt"]
+                        }
+                    }
                 }
             }
         )
