@@ -1,4 +1,4 @@
-const { Appointment, Patient, Doctor, User }  = require('../models');
+const { Appointment, Patient }  = require('../models');
 
 const appointmentController = {};
 
@@ -125,15 +125,22 @@ appointmentController.updateAppointment = async(req,res) => {
 appointmentController.deleteAppointment = async(req,res) => {
   try {
 
-    const appointment = await Appointment.findByPk(req.params.id);
-    console.log(appointment);
-    if (!appointment) {
-      return res.status(404).json({ message: 'Appointment not found' });
-    }
+    const { appointmentId } = req.body
 
-    await appointment.destroy();
+    const cancelAppointment = await Appointment.destroy(
+      {
+        where: 
+        {
+          id: appointmentId
+        }
+      }
+    );
 
-    return res.json({ message: 'Appointment deleted successfully' });
+    return res.json(
+      { 
+        message: 'Appointment deleted successfully' 
+      }
+    );
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: 'Internal server error' });
