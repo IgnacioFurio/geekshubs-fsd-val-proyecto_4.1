@@ -1,4 +1,4 @@
-const { Doctor } = require('../models')
+const { Doctor, Appointment } = require('../models')
 
 const doctorController = {};
 
@@ -10,6 +10,9 @@ doctorController.getDoctorAppointment = async (req,res) => {
             {
                 where: {
                     user_id: doctorId
+                }, 
+                include: {
+                    model: Appointment
                 }
             }
         )
@@ -17,7 +20,7 @@ doctorController.getDoctorAppointment = async (req,res) => {
         return res.json(
         {
             succes: true,
-            message: 'Doctors Appointment',
+            message: 'Doctors Info and Appointment',
             data: newConsult
         }
     );
