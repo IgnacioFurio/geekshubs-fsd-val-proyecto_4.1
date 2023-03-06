@@ -16,6 +16,8 @@
     <li><a href="#diagrama-bd">Diagrama</a></li>
     <li><a href="#instalacion-en-local">Instalacion</a></li>
     <li><a href="#endpoints">Realizacion de endpoints</a></li>
+    <li><a href="#errores">Errores</a></li>
+    <li><a href="#bugs">Bugs</a></li>
     <li><a href="#licencia">Licencia</a></li>
     <li><a href="#webgrafia">Webgrafia</a></li>
     <li><a href="#agradecimientos">Agradecimientos</a></li>
@@ -143,6 +145,23 @@ Se define con la función getDoctorAppointment que  permite obtener la informaci
  La realizamos con la `getPatientAppointment` y obtiene todas las citas médicas programadas para el paciente logueado en la aplicación, incluyendo la información del médico responsable de cada cita.
 </detalles>
 
+## Errores
+
+
+-> 500: Something went wrong: error.message
+-> 501: Invalid credentials
+-> 502: Empty field
+-> 503: Appointment not fount
+-> 504: User not found
+-> 505: You shall not pass!!
+
+## Bugs
+
+bugs conocidos:
+-> Un paciente que es doctor puede pedir cita consigo mismo.
+-> Pueden haber citas solapadas
+-> Cualquier usuario puede borrar cualquier cita (isDoctor)
+
 ## Licencia
 
 Este proyecto se encuentra bajo licencia de "MIT"
@@ -157,10 +176,15 @@ Para conseguir nuestro objetivo hemos recopilado información de:
 
 ## Agradecimientos:
 
-Agradezco a mi compañero Ignacio por el apoyo,entendimiento y comprension.
+Agradezco a mi compañero Ignacio por el apoyo,entendimiento y comprension.Agradezco a mi compañera por no rendirse, aunque el viento soplará en contra. Al resto de mics compañeros de aula por seguir siendo piña yt estar ahí cuando alguien lo necesitaba. Al equipo de profesores por rescatarnos en los momentos que el barco se hundía. A mi familia por apoyarme incondicionalmente. Y especialmente a Arturo Ubé. Gracias a toda la gente que me ha apoyado de una forma u otra.
 
 
 ## Contacto
+
+https://github.com/IgnacioFurio
+
+
+https://github.com/corina43
 
 <a href = "mailto:micorreoelectronico@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 <a href="https://www.linkedin.com/in/linkedinUser/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
