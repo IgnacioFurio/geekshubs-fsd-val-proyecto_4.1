@@ -42,7 +42,7 @@ appointmentController.createAppointment = async (req,res) => {
     );  
   }
 };
-appointmentController.getAppointment = async (req,res) => {
+appointmentController.getUserAppointment = async (req,res) => {
   
   try {
 

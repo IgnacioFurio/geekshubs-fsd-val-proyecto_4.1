@@ -28,7 +28,7 @@ const verifyToken = (req, res, next) => {
     return res.status(500).json(
       {
         succes: false,
-        message: "Somethin went wrong.",
+        message: "Something went wrong.",
         error: error.message
       }
     );

@@ -17,4 +17,4 @@ app.use(router)
 db.then(() => {
     app.listen(PORT, () => console.log("Server on port " + PORT));
 })
-    .catch((error) => console.log(error.message));
+.catch((error) => console.log(error.message));
