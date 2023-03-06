@@ -42,46 +42,46 @@ appointmentController.createAppointment = async (req,res) => {
     );  
   }
 };
-appointmentController.getUserAppointment = async (req,res) => {
+// appointmentController.getUserAppointment = async (req,res) => {
   
-  try {
+//   try {
 
-    const userId = req.userId;
+//     const userId = req.userId;
 
-    const appointment = await Appointment.findByPk(
-      userId,
-      {
-        include: 
-        {
-          model: Patient,
-          attributes: 
-          {
-            exclude: ["id", "user_id"]
-          }
-        },
-        attributes: 
-        {
-          exclude: ["patient_id", "doctor_id"]
-        }      
-      }
-    );
+//     const appointment = await Appointment.findByPk(
+//       userId,
+//       {
+//         include: 
+//         {
+//           model: Patient,
+//           attributes: 
+//           {
+//             exclude: ["id", "user_id"]
+//           }
+//         },
+//         attributes: 
+//         {
+//           exclude: ["patient_id", "doctor_id"]
+//         }      
+//       }
+//     );
 
-    if (!appointment) {
-      return res.status(503).json({ message: 'Appointment not found.' });
-    }
+//     if (!appointment) {
+//       return res.status(503).json({ message: 'Appointment not found.' });
+//     }
 
-    return res.json(
-      {
-        succes: true,
-        message: 'Appointment found.',
-        data: appointment,
-      }
-    );
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Something went wrong.' });
-  };
-};
+//     return res.json(
+//       {
+//         succes: true,
+//         message: 'Appointment found.',
+//         data: appointment,
+//       }
+//     );
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({ message: 'Something went wrong.' });
+//   };
+// };
 appointmentController.getAllAppointment = async (req,res) => {
   
   try {
