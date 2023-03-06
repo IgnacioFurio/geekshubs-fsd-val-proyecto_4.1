@@ -255,10 +255,14 @@ This project is under the MIT license.
 ---
 
 Para conseguir nuestro objetivo hemos recopilado información de:
-- link a repositorios 
-- link a documentacion de librerias externas
-- Videos YouTube
-- ...
+- Repositorios en GitHub de la academia Geeks Hubs. // GeekHubs's GitHub repositories. 
+  [![GITHUB1]][github-url]
+
+  [GITHUB1]: https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white
+  [github-url]: https://github.com/GeeksHubs
+- Documentación oficial. // Official docs.
+- Slack Overflow.  https://stackoverflow.com/
+- Vid
 
 ## Agradecimientos // Thanks
 - Corina Ciorpac:
@@ -283,16 +287,16 @@ Para conseguir nuestro objetivo hemos recopilado información de:
 
 - Corina Ciorpac
   
-  [![GITHUB1]][github-url]
+  [![GITHUB2]][github-url]
 
-  [GITHUB1]: https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=blue
+  [GITHUB2]: https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=blue
   [github-url]: https://www.github.com/
 
 - Ignacio Furió José
 
-  [![GITHUB2]][github-url] [![LINKEDIN]][linkedin-url]  
+  [![GITHUB3]][github-url] [![LINKEDIN]][linkedin-url]  
   
-  [GITHUB2]: https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green
+  [GITHUB3]: https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green
   [github-url]: https://github.com/IgnacioFurio 
   [LINKEDIN]: https://img.shields.io/badge/linkedin-0274B3?style=for-the-badge&logo=linkedin&logoColor=white
   [LINKEDIN-url]: https://www.linkedin.com/in/ignacio-furi%C3%B3-0a9010233/
