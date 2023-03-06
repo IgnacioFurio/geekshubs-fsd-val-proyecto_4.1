@@ -104,7 +104,7 @@ appointmentController.getAllAppointment = async (req,res) => {
     );
 
     if (!appointment) {
-      return res.status(503).json({ message: 'Appointment not found.' });
+      return res.status(503).json({ message: 'Not existing appointments.' });
     }
 
     return res.json(
