@@ -283,16 +283,16 @@ Para conseguir nuestro objetivo hemos recopilado información de:
 
 - Corina Ciorpac
   
-  [![GITHUB]][github-url]
+  [![GITHUB1]][github-url]
 
-  [GITHUB]: https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white
+  [GITHUB1]: https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=blue
   [github-url]: https://www.github.com/
 
 - Ignacio Furió José
 
-  [![GITHUB]][github-url] [![LINKEDIN]][linkedin-url]  
+  [![GITHUB2]][github-url] [![LINKEDIN]][linkedin-url]  
   
-  [GITHUB]: https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green
+  [GITHUB2]: https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green
   [github-url]: https://github.com/IgnacioFurio 
   [LINKEDIN]: https://img.shields.io/badge/linkedin-0274B3?style=for-the-badge&logo=linkedin&logoColor=white
   [LINKEDIN-url]: https://www.linkedin.com/in/ignacio-furi%C3%B3-0a9010233/
