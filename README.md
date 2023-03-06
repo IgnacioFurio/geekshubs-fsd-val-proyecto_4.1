@@ -73,6 +73,20 @@ Tecnologías utilizadas:
   - Creacion Perfil usuario
 
 
+   Post localhost:3000/auth/register
+
+
+{
+    "username": "",
+    "email": "prueba1@gmail.com",
+    "password": "123456"
+}
+
+
+
+
+
+
 Se ha realizado en el controlador `authController` mediante la función createUserProfile  se encarga de crear un nuevo usuario en la base de datos, recibiendo los datos del usuario a través del cuerpo de la solicitud. Primero, se verifica si los campos obligatorios están completos. Si no, la función devuelve un mensaje de error. Si todo está en orden, se cifra la contraseña y se crea un nuevo usuario en la base de datos. La función devuelve un mensaje de éxito y los datos del nuevo usuario creado.
 
 
