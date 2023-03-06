@@ -82,6 +82,43 @@ appointmentController.getUserAppointment = async (req,res) => {
     return res.status(500).json({ message: 'Something went wrong.' });
   };
 };
+appointmentController.getAllAppointment = async (req,res) => {
+  
+  try {
+
+    const appointment = await Appointment.findAll(
+      {
+        include: 
+        {
+          model: Patient,
+          attributes: 
+          {
+            exclude: ["id", "user_id"]
+          }
+        },
+        attributes: 
+        {
+          exclude: ["patient_id", "doctor_id"]
+        }      
+      }
+    );
+
+    if (!appointment) {
+      return res.status(503).json({ message: 'Appointment not found.' });
+    }
+
+    return res.json(
+      {
+        succes: true,
+        message: 'Appointment found.',
+        data: appointment,
+      }
+    );
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Something went wrong.' });
+  };
+};
 appointmentController.updateAppointment = async(req,res) => {
   try {
 

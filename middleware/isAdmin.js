@@ -13,7 +13,7 @@ const isAdmin = (req,res,next) => {
         return res.status(505).json(
             { 
                 succes: false,
-                message: 'You shall not pass!!. You are not powerfull enought to walk through this barrier.' 
+                message: 'You shall not pass!!. You are not powerfull enough to walk through this barrier.' 
             }
         );
 
