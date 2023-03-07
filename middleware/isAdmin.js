@@ -3,7 +3,7 @@ const isAdmin = (req,res,next) => {
     try {
         const superAdmin = process.env.SUPERADMIN;
         const admin = process.env.ADMIN;
-        console.log(admin);
+
         const userAdmin = req.roleId
 
         if(userAdmin == superAdmin || userAdmin == admin){
