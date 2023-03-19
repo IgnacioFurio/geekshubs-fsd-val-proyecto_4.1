@@ -8,14 +8,14 @@ module.exports = {
      *
      * Example:*/
     await queryInterface.bulkInsert('Users', [
-      {user_name: "Eddieden", email: "eddieden@gmail.com", password: "$2b$10$tPljLIR3CPUCQBdIqOt0Du4RaJig1nH9v5q0Nu/LXOeD006DOjmlS", role_id: 1, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
-      {user_name: "Corina", email: "corina@gmail.com", password: "$2b$10$ETOiGo9k18Y4218xiBVbee2mENNnKZmWo8RpH/AkRH2PZh1TO0vYW", role_id: 2, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
-      {user_name: "FreyrII", email: "freyrii@gmail.com", password: "$2b$10$mJmVsmLyY9qC62b6nHg1Tu3WJCSnd0wN3TaATlRt.Tr4WZyP4OUeq", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
-      {user_name: "Valsev", email: "valsev@gmail.com", password: "$2b$10$zrZXa.wxy5jWc0XWF.UvHuOcimPR9Wz01HmdXIT0a/deQBjLzWdY.", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
-      {user_name: "Tango06", email: "tango06@gmail.com", password: "$2b$10$.DWSMcZ1huHP8vxGs1MK3eWj7IDUcTBoB6QR5kyCNNQXGMqJHuZz6", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
-      {user_name: "Viti64", email: "viti64@gmail.com", password: "$2b$10$ksvpPLtcNR.BzBgcgJToF.wzFmsUUvHMqTRB0kd6HngdOJItnSufS", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
-      {user_name: "PaineCore", email: "painecore@gmail.com", password: "$2b$10$eK3EQdtOB5pKW.gt/0Y4muDwivbUoqipSLOMSy0We7AeP7uO4hxOS", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
-      {user_name: "Bicho", email: "bicho@gmail.com", password: "$2b$10$Jrh46UOlrjx8cWML8BDBm.Nwxz0cIU6sjU4uk7v66pcq9jZF1vJ0W", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {user_name: "Eddieden", email: "eddieden@email.com", password: "$2b$10$koTtFqLEqz66NTZI1S8X3OV5mHDyRnHUiSK06Y/DJgfuu7d7MDSD6", role_id: 1, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {user_name: "Corina", email: "corina@email.com", password: "$2b$10$Ytla70DJlNIb6T9UQEAQguk5QRzSJ9u6RGCfuBh7/jk4yXmanhsu6", role_id: 2, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {user_name: "FreyrII", email: "freyrii@email.com", password: "$2b$10$C7Z/BVQBavw7i4ayyPCt6eWafXHAQqaYYtLB1G6u3QUE0hePtNKjy", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {user_name: "Valsev", email: "valsev@email.com", password: "$2b$10$n0JFw/XNwGlUpasz2aD7WusujsOAfaGDUsURZZBYy5yzGk4.AjufO", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {user_name: "Tango06", email: "tango06@email.com", password: "$2b$10$8JwWKZOp.AXmyUczY71fv.4Yr4fyldGQG88CKlpS6KB9FhPQE50/.", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {user_name: "Viti64", email: "viti64@email.com", password: "$2b$10$tnlJNcHQOFvQqKDa7Jk5pOwO9hWBLhuu11Pl9pQ9/mnWDMFfx2NQi", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {user_name: "PaineCore", email: "painecore@email.com", password: "$2b$10$qyJtNT1yAlBNce/RYTnop..MX2A3GdWaqUoA0cUB3TiYtpAf6h.P2", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {user_name: "Bicho", email: "bicho@email.com", password: "$2b$10$l6x.0uSjuVpIUEhFFvrFVOipKTfVo6nghc8d0UvqOy30GhyKvY7zO", role_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
     ], {}); 
   },
 

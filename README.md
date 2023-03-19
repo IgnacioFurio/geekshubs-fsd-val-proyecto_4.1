@@ -220,12 +220,15 @@ Tecnologías utilizadas:
 
 ---
 
--  500: Something went wrong: error.message
+- 500: Something went wrong: error.message
 - 501: Invalid credentials
 - 502: Empty field
 - 503: Appointment not fount
 - 504: User not found
 - 505: You shall not pass!!
+- 506: You must fill all the fields
+- 507: Your password must contain at least eight characters
+- 508: Your password must contain at least one letter and one number.
 
 ---
 
