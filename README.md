@@ -76,14 +76,6 @@ Tecnologías utilizadas:
    Post localhost:3000/auth/register
 
 
-{
-    "username": "",
-    "email": "prueba1@gmail.com",
-    "password": "123456"
-}
-
-
-
 
 
 
