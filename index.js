@@ -21,6 +21,10 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(router);
 
+app.get('/', (req,res) => {
+    return res.send('Welcome')
+});
+
 db.then(() => {
     app.listen(PORT, () => console.log("Server on port " + PORT));
 })
