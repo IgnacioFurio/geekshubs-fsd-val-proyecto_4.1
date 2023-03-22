@@ -1,13 +1,15 @@
-const { pathToFileURL } = require('url');
 const { User, Patient, Appointment, Doctor} = require('../models');
 
 const patientController = {};
 
 patientController.createPatient = async (req,res) => {
+
     try {
         const {name, surname, DNI, phone_number, post_code, birth, allergy, surgery} = req.body;
 
         const userId = req.userId
+
+        console.log(userId);
 
         if(name === "" || surname === "" || DNI === "" || phone_number === "" || post_code === "" || birth === ""){
             return res.status(502).json(
