@@ -161,7 +161,7 @@ appointmentController.updateAppointment = async(req,res) => {
 };
 appointmentController.deleteAppointment = async(req,res) => {
   try {
-
+    
     const { appointmentId } = req.body
 
     if(appointmentId === ""){
@@ -194,7 +194,7 @@ appointmentController.deleteAppointment = async(req,res) => {
     return res.status(500).json(
       { 
         succes: false,
-        message: 'Something went wrong',
+        message: 'Something went wrong.',
         error: error.message 
       }
     );
