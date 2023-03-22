@@ -3,12 +3,16 @@ const app = express();
 
 
 app.use(express.json());
-
+app.get('/welcome', (req, res) => {
+    return res.send('Bienvenido a mi app')
+})
 
 
 const db = require('./db.js');
 require('dotenv').config()
 const router = require('./router')
+
+
 
 const PORT = process.env.PORT;
 const cors = require ("cors")
