@@ -10,7 +10,7 @@ appointmentController.createAppointment = async (req,res) => {
     if(date_time === "" || patient_id === "" || doctor_id  === ""){
       return res.status(502).json(
         {
-          succes: false,
+          success: false,
           message: 'Empty field',
         }
       );
@@ -35,7 +35,7 @@ appointmentController.createAppointment = async (req,res) => {
   } catch (error) {
     return res.status(500).json(
       { 
-        succes: false,
+        success: false,
         message: 'Something went wrong.',
         error: error.message
       }
@@ -109,7 +109,7 @@ appointmentController.getAllAppointment = async (req,res) => {
 
     return res.json(
       {
-        succes: true,
+        success: true,
         message: 'Appointment found.',
         data: appointment,
       }
@@ -127,7 +127,7 @@ appointmentController.updateAppointment = async(req,res) => {
     if( appointmentId === "" || newDate === ""){
       return res.status(502).json(
         {
-          succes: false,
+          success: false,
           message: 'Empty field.'
         }
       );
@@ -152,7 +152,7 @@ appointmentController.updateAppointment = async(req,res) => {
   } catch (error) {
     return res.status(500).json(
       { 
-        succes: false,
+        success: false,
         message: 'Something went wrong' ,
         error: error.message
       }
@@ -167,7 +167,7 @@ appointmentController.deleteAppointment = async(req,res) => {
     if(appointmentId === ""){
       return res.status(502).json(
         {
-          succes: false,
+          success: false,
           message: 'Empty field.'
         }
       );
@@ -184,7 +184,7 @@ appointmentController.deleteAppointment = async(req,res) => {
 
     return res.json(
       { 
-        succes: true,
+        success: true,
         message: 'Appointment deleted successfully',
         data: cancelAppointment 
       }
@@ -193,7 +193,7 @@ appointmentController.deleteAppointment = async(req,res) => {
     console.error(error);
     return res.status(500).json(
       { 
-        succes: false,
+        success: false,
         message: 'Something went wrong.',
         error: error.message 
       }
