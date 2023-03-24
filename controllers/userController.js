@@ -1,4 +1,4 @@
-const { User, Patient } = require('../models');
+const { User, Patient, Doctor } = require('../models');
 const bcrypt = require('bcrypt');
 
 const userController = {};
@@ -108,6 +108,32 @@ userController.updateUserProfile = async (req,res) => {
   } catch (error) {
     
     return res.status(500).send(
+      { 
+        succes: false,
+        message: 'Something went wront.',
+        data: error.message 
+      }
+    );
+  }
+};
+
+userController.getDoctorData =  async (req, res) => {
+  try {
+    const userId = req.userId;
+
+    const doctors = await Doctor.findAll();
+
+    return res.json(
+      {
+        succes: true,
+        message: 'Doctors information',
+        data: doctors
+      }
+    );
+
+  } catch (error) {
+
+    return res.status(500).json(
       { 
         succes: false,
         message: 'Something went wront.',
