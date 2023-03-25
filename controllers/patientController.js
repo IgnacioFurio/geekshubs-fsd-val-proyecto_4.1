@@ -64,7 +64,7 @@ patientController.getPatientInfo = async (req,res) => {
                     },
                 attributes: 
                     {
-                    exclude: ["id", "password","role_id"]
+                    exclude: ["password","role_id"]
                     },
                 include: 
                     {
