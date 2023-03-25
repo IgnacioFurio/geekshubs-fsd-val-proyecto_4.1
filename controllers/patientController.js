@@ -64,14 +64,14 @@ patientController.getPatientInfo = async (req,res) => {
                     },
                 attributes: 
                     {
-                    exclude: ["password","role_id"]
+                    exclude: ["id", "password","role_id"]
                     },
                 include: 
                     {
                     model: Patient,
                     attributes: 
                         {
-                        exclude: ["id", "user_id"]
+                        exclude: ["user_id"]
                         }
                     }
             }   
