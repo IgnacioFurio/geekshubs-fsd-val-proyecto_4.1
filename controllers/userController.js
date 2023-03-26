@@ -145,7 +145,6 @@ userController.updateUserProfile = async (req,res) => {
 
 userController.getDoctorData =  async (req, res) => {
   try {
-    const userId = req.userId;
 
     const doctors = await Doctor.findAll();
 

@@ -7,6 +7,6 @@ const router = require('express').Router();
 router.get('/profile', verifyToken, userController.getUserProfile);
 router.get('/all', verifyToken, isAdmin, userController.getAllUsers)
 router.put('/profile', verifyToken, userController.updateUserProfile);
-router.get('/doctor-info', verifyToken, userController.getDoctorData)
+router.get('/doctor-info', userController.getDoctorData)
 
 module.exports = router;
