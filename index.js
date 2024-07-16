@@ -26,6 +26,6 @@ app.get('/', (req,res) => {
 });
 
 db.then(() => {
-    app.listen(PORT, () => console.log("Server on port " + PORT));
+    app.listen(PORT, "0.0.0.0", () => console.log("Server on port " + PORT));
 })
 .catch((error) => console.log(error.message));
